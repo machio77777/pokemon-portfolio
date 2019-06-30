@@ -14,7 +14,7 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
     ]
   },
   /*
@@ -25,7 +25,7 @@ export default {
   ** Global CSS
   */
   css: [
-    '~/assets/common.css'
+    '~/assets/css/common.css'
   ],
   /*
   ** Plugins to load before mounting the App

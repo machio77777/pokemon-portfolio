@@ -1,0 +1,33 @@
+
+* {
+  font-family: "ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro";
+  margin: 0;
+  padding: 0;
+  color: #666666;
+}
+
+.main-container {
+  padding: 20px 0 40px 20px;
+  width: 85%;
+  background-color: #f5f5f5;
+}
+
+button {
+  padding: 8px 25px;
+  background-color: #4689FF;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  border-style: none;
+  border-radius: 3px;
+  box-shadow: 0 0 8px gray;
+}
+ul {
+  list-style: none;
+}
+li {
+  margin-bottom: 20px;
+}
+a {
+  text-decoration: none;
+}

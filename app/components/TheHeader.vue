@@ -1,23 +1,22 @@
 <template>
   <div id="header-container">
     <ul id="header">
-      <li><nuxt-link to="/">Pokémon Portfolio</nuxt-link></li>
+      <li>Pokémon Portfolio</li>
     </ul>
   </div>
 </template>
 
-<style>
+<style scoped>
 #header-container {
-  padding: 20px 0;
-  background-color: #000000;
+  padding: 10px 0;
+  background-color: #4682b4;
 }
 #header li {
   display: inline-block;
   margin: 0 20px;
   font-weight: bold;
 }
-#header a {
+#header li {
   color: #ffffff;
-  text-decoration: none;
 }
 </style>
