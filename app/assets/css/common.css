@@ -12,16 +12,6 @@
   background-color: #f5f5f5;
 }
 
-button {
-  padding: 8px 25px;
-  background-color: #4689FF;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: bold;
-  border-style: none;
-  border-radius: 3px;
-  box-shadow: 0 0 8px gray;
-}
 ul {
   list-style: none;
 }

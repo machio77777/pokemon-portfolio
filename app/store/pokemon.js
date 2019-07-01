@@ -14,10 +14,10 @@ export const mutations = {
 }
 
 export const actions = {
-  async fetchPokemons({ commit }, { generation}) {
+  async fetchPokemons({ commit }, { parameters }) {
     let url = '/api/v1/pokemons'
-    if (generation !== null && generation !== undefined) {
-      url = url + '?generation=' + generation
+    if (parameters !== null && parameters !== undefined) {
+      url = url + '?' + parameters
     }
     const response = await this.$axios.$get(url)
     const pokemons = response.data

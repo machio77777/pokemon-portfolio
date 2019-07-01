@@ -5,7 +5,7 @@
     <div class="site-contents">
       <div class="site-sub-content">
         <img src="~/assets/img/monster-ball.png" alt="">
-        <nuxt-link to="/pokemon">ポケモン図鑑一覧</nuxt-link>
+        <nuxt-link to="/pokemon?generation=1">ポケモン図鑑一覧</nuxt-link>
       </div>
       <div class="site-sub-content">
         <img src="~/assets/img/poke-tre.png" alt="">

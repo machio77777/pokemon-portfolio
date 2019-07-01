@@ -36,12 +36,17 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
 
-  axios: {
+  //axios: {
     // 自分のfirebaseアカウントを設定
-    baseURL: 'http://localhost:8888'
+    //baseURL: 'http://localhost:8888'
+  //},
+
+  proxy: {
+    '/api/': { target: 'http://localhost:8888', pathRewrite: {'^/': ''} }
   },
 
   /*
