@@ -5,7 +5,7 @@
     <div class="site-contents">
       <div class="site-sub-content">
         <img src="~/assets/img/monster-ball.png" alt="">
-        <nuxt-link to="/pokemon?generation=1">ポケモン図鑑一覧</nuxt-link>
+        <nuxt-link to="/pokemon">ポケモン図鑑一覧</nuxt-link>
       </div>
       <div class="site-sub-content">
         <img src="~/assets/img/poke-tre.png" alt="">
@@ -19,7 +19,7 @@
     <div class="site-contents">
       <div class="site-sub-content">
         <img src="~/assets/img/learning-machine.png" alt="">
-        <nuxt-link to="/skill">育成済み一覧</nuxt-link>
+        <nuxt-link to="/">育成済み一覧</nuxt-link>
       </div>
     </div>
     <p class="head-line">外部リンク先</p>
@@ -39,8 +39,12 @@
     </div>
     <div class="site-contents">
       <div class="site-sub-content">
-        <img src="~/assets/img/025.png" style="width: 12%;" alt="">
+        <img src="~/assets/img/battle-recoder.png" style="width: 12%;" alt="">
         <a href="https://github.com/machio77777/pokemon-api" target="_blank">Pokémon API</a>
+      </div>
+      <div class="site-sub-content">
+        <img src="~/assets/img/albam.png" style="width: 12%;" alt="">
+        <a href="https://github.com/machio77777/pokemon-portfolio" target="_blank">Pokémon SPA</a>
       </div>
       <div class="site-sub-content">
         <img src="~/assets/img/swagger.svg" style="width: 9%;" alt="">

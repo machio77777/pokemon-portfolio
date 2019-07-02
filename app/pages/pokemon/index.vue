@@ -22,8 +22,8 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  async asyncData({ store, query }) {
-    const queryString = 'generation=' + query.generation
+  async asyncData({ store }) {
+    const queryString = 'generation=1'
     await store.dispatch('pokemon/fetchPokemons', { parameters : queryString })
   },
   computed: {
@@ -78,5 +78,8 @@ export default {
   border-radius: 3px;
   background-color: #f8f8ff;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>
