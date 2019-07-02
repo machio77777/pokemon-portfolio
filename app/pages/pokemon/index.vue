@@ -1,18 +1,21 @@
 <template>
   <div class="main-container">
-    <div id="region-list">
-      <div class="region" @click="init('generation=1')"><img src="~/assets/img/monster-ball.png" alt="" /> カントー</div>
-      <div class="region" @click="init('generation=2')"><img src="~/assets/img/monster-ball.png" alt="" /> ジョウト</div>
-      <div class="region" @click="init('generation=3')"><img src="~/assets/img/monster-ball.png" alt="" /> ホウエン</div>
-      <div class="region" @click="init('generation=4')"><img src="~/assets/img/monster-ball.png" alt="" /> シンオウ</div>
-      <div class="region" @click="init('generation=5')"><img src="~/assets/img/monster-ball.png" alt="" /> イッシュ</div>
-      <div class="region" @click="init('generation=6')"><img src="~/assets/img/monster-ball.png" alt="" /> カロス</div>
-      <div class="region" @click="init('generation=7')"><img src="~/assets/img/monster-ball.png" alt="" /> アローラ</div>
-      <div class="region" @click="init('megaFlg=1')"><img src="~/assets/img/monster-ball.png" alt="" /> メガシンカ</div>
-    </div>
-    <div id="pokemons">
-      <div class="element-link" v-for="pokemon in pokemons" :key="pokemon.zukanNo + pokemon.subNo">
-        <nuxt-link to="/">{{ pokemon.zukanNo }} : {{ pokemon.name }}</nuxt-link>
+    <div v-show="loading" class="loader"></div>
+    <div v-show="!loading">
+      <div id="region-list">
+        <label><div class="region" @click="init('generation=1')"><img src="~/assets/img/monster-ball.png" alt="" /> カントー</div></label>
+        <label><div class="region" @click="init('generation=2')"><img src="~/assets/img/monster-ball.png" alt="" /> ジョウト</div></label>
+        <label><div class="region" @click="init('generation=3')"><img src="~/assets/img/monster-ball.png" alt="" /> ホウエン</div></label>
+        <label><div class="region" @click="init('generation=4')"><img src="~/assets/img/monster-ball.png" alt="" /> シンオウ</div></label>
+        <label><div class="region" @click="init('generation=5')"><img src="~/assets/img/monster-ball.png" alt="" /> イッシュ</div></label>
+        <label><div class="region" @click="init('generation=6')"><img src="~/assets/img/monster-ball.png" alt="" /> カロス</div></label>
+        <label><div class="region" @click="init('generation=7')"><img src="~/assets/img/monster-ball.png" alt="" /> アローラ</div></label>
+        <label><div class="region" @click="init('megaFlg=1')"><img src="~/assets/img/monster-ball.png" alt="" /> メガシンカ</div></label>
+      </div>
+      <div id="pokemons">
+        <div class="element-link" v-for="pokemon in pokemons" :key="pokemon.zukanNo + pokemon.subNo">
+          <nuxt-link to="/">{{ pokemon.zukanNo }} : {{ pokemon.name }}</nuxt-link>
+        </div>
       </div>
     </div>
   </div>
@@ -27,7 +30,7 @@ export default {
     await store.dispatch('pokemon/fetchPokemons', { parameters : queryString })
   },
   computed: {
-    ...mapGetters("pokemon", ['pokemons'])
+    ...mapGetters("pokemon", ['pokemons', 'loading'])
   },
   methods: {
     async init(queryString) {
@@ -39,13 +42,16 @@ export default {
 </script>
 
 <style scoped>
+.loader {
+  margin-top: 37vh;
+}
 #region-list {
   display: flex;
   width: 1000px;
   margin: 0 auto;
 }
 .region {
-  width: 100px;
+  width: 97px;
   margin: 10px;
   padding: 5px 3px;
   text-align: center;
@@ -56,6 +62,9 @@ export default {
   background-color: #000000;
   border-radius: 3px;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+}
+.region:hover {
+  background-color: #fa8072;
 }
 .region img {
   width: 20%;

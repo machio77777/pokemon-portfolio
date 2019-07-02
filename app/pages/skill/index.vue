@@ -8,7 +8,7 @@
       </div>
       <div class="skill_element" style="display: flex;" v-for="skill in skills" :key="skill.skillId">
         <div class="id">{{ skill.skillId }}</div>
-        <div class="name">{{ skill.skillName }}</div>
+        <div class="name"><nuxt-link to="/">{{ skill.skillName }}</nuxt-link></div>
         <div class="effect">{{ skill.effect }}</div>
       </div>
     </div>

@@ -8,7 +8,7 @@
       </div>
       <div class="quality_element" style="display: flex;" v-for="quality in qualities" :key="quality.qualityId">
         <div class="id">{{ quality.qualityId }}</div>
-        <div class="name">{{ quality.qualityName }}</div>
+        <div class="name"><nuxt-link to="/">{{ quality.qualityName }}</nuxt-link></div>
         <div class="effect">{{ quality.effect }}</div>
       </div>
     </div>

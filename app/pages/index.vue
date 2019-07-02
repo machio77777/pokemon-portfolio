@@ -3,53 +3,63 @@
     <img src="~/assets/img/home.gif" alt="">
     <p class="head-line">レーティング対戦向け</p>
     <div class="site-contents">
-      <div class="site-sub-content">
-        <img src="~/assets/img/monster-ball.png" alt="">
-        <nuxt-link to="/pokemon">ポケモン図鑑一覧</nuxt-link>
-      </div>
-      <div class="site-sub-content">
-        <img src="~/assets/img/poke-tre.png" alt="">
-        <nuxt-link to="/quality">特性一覧</nuxt-link>
-      </div>
-      <div class="site-sub-content">
-        <img src="~/assets/img/skill-case.png" alt="">
-        <nuxt-link to="/skill">技一覧</nuxt-link>
-      </div>
+      <nuxt-link to="/pokemon">
+        <div class="site-sub-content">
+          <img src="~/assets/img/monster-ball.png" alt="">ポケモン図鑑一覧
+        </div>
+      </nuxt-link>
+      <nuxt-link to="/quality">
+        <div class="site-sub-content">
+          <img src="~/assets/img/poke-tre.png" alt="">特性一覧
+        </div>
+      </nuxt-link>
+      <nuxt-link to="/skill">
+        <div class="site-sub-content">
+          <img src="~/assets/img/skill-case.png" alt="">技一覧
+        </div>
+      </nuxt-link>
     </div>
-    <div class="site-contents">
-      <div class="site-sub-content">
-        <img src="~/assets/img/learning-machine.png" alt="">
-        <nuxt-link to="/">育成済み一覧</nuxt-link>
+    <nuxt-link to="/">
+      <div class="site-contents">
+        <div class="site-sub-content">
+          <img src="~/assets/img/learning-machine.png" alt="">育成済み一覧
+        </div>
       </div>
-    </div>
+    </nuxt-link>
     <p class="head-line">外部リンク先</p>
     <div class="site-contents">
-      <div class="site-sub-content">
-        <img src="~/assets/img/egg.png" alt="">
-        <a href="https://www.pokemon.co.jp/" target="_blank">ポケモン公式サイト</a>
-      </div>
-      <div class="site-sub-content">
-        <img src="~/assets/img/voice-checker.png" alt="">
-        <a href="https://yakkun.com/" target="_blank">ポケモン徹底攻略</a>
-      </div>
-      <div class="site-sub-content">
-        <img src="~/assets/img/gb.png" alt="">
-        <a href="http://hikochans.com/" target="_blank">ひこちゃんず !</a>
-      </div>
+      <a href="https://www.pokemon.co.jp/" target="_blank">
+        <div class="site-sub-content">
+          <img src="~/assets/img/egg.png" alt="">ポケモン公式サイト
+        </div>
+      </a>
+      <a href="https://yakkun.com/" target="_blank">
+        <div class="site-sub-content">
+          <img src="~/assets/img/voice-checker.png" alt="">ポケモン徹底攻略
+        </div>
+      </a>
+      <a href="http://hikochans.com/" target="_blank">
+        <div class="site-sub-content">
+          <img src="~/assets/img/gb.png" alt="">ひこちゃんず !
+        </div>
+      </a>
     </div>
     <div class="site-contents">
-      <div class="site-sub-content">
-        <img src="~/assets/img/battle-recoder.png" style="width: 12%;" alt="">
-        <a href="https://github.com/machio77777/pokemon-api" target="_blank">Pokémon API</a>
-      </div>
-      <div class="site-sub-content">
-        <img src="~/assets/img/albam.png" style="width: 12%;" alt="">
-        <a href="https://github.com/machio77777/pokemon-portfolio" target="_blank">Pokémon SPA</a>
-      </div>
-      <div class="site-sub-content">
-        <img src="~/assets/img/swagger.svg" style="width: 9%;" alt="">
-        <a href="https://machio77777.github.io/pokemon-swagger/" target="_blank">swagger定義</a>
-      </div>
+      <a href="https://github.com/machio77777/pokemon-api" target="_blank">
+        <div class="site-sub-content">
+          <img src="~/assets/img/battle-recoder.png" style="width: 12%;" alt="">Pokémon API
+        </div>
+      </a>
+      <a href="https://github.com/machio77777/pokemon-portfolio" target="_blank">
+        <div class="site-sub-content">
+          <img src="~/assets/img/albam.png" style="width: 12%;" alt="">Pokémon SPA
+        </div>
+      </a>
+      <a href="https://machio77777.github.io/pokemon-swagger/" target="_blank">
+        <div class="site-sub-content">
+          <img src="~/assets/img/swagger.svg" style="width: 9%;" alt="">swagger定義
+        </div>
+      </a>
     </div>
   </div>
 </template>
@@ -70,8 +80,13 @@ img {
   width: 50%;
 }
 .head-line {
-  margin: 15px 0;
+  width: 800px;
+  margin: 35px auto 15px;
+  padding: 5px 10px;
+  color: #ffffff;
   font-size: 16px;
+  background-color: #5f9ea0;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.4); 
 }
 .site-contents {
   display: flex;
@@ -88,9 +103,12 @@ img {
   border-radius: 4px;
   box-shadow: 3px 3px 3px rgba(0,0,0,0.4); 
 }
-.site-sub-content a {
+a .site-sub-content {
   vertical-align: middle;
   color: #ffffff;
+}
+a .site-sub-content:hover {
+  background-color: #fa8072;
 }
 .site-sub-content img {
   width: 13%;
