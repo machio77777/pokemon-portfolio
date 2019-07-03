@@ -14,7 +14,7 @@
       </div>
       <div id="pokemons">
         <div class="element-link" v-for="pokemon in pokemons" :key="pokemon.zukanNo + pokemon.subNo">
-          <nuxt-link to="/">{{ pokemon.zukanNo }} : {{ pokemon.name }}</nuxt-link>
+          <nuxt-link :to="{ name: 'pokemon-zukanNo-subNo', params: { zukanNo: pokemon.zukanNo, subNo: pokemon.subNo }}">{{ pokemon.zukanNo }} : {{ pokemon.name }}</nuxt-link>
         </div>
       </div>
     </div>

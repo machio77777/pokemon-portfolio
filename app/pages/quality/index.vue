@@ -8,7 +8,7 @@
       </div>
       <div class="quality_element" style="display: flex;" v-for="quality in qualities" :key="quality.qualityId">
         <div class="id">{{ quality.qualityId }}</div>
-        <div class="name"><nuxt-link to="/">{{ quality.qualityName }}</nuxt-link></div>
+        <div class="name"><nuxt-link :to="{ name: 'quality-qualityId', params: { qualityId: quality.qualityId }}">{{ quality.qualityName }}</nuxt-link></div>
         <div class="effect">{{ quality.effect }}</div>
       </div>
     </div>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   async asyncData({ store }) {

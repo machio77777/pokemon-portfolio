@@ -1,15 +1,20 @@
 
 export const state = () => ({
-  qualities: []
+  qualities: [],
+  quality: []
 })
 
 export const getters = {
-  qualities: (state) => state.qualities
+  qualities: (state) => state.qualities,
+  quality: (state) => state.quality
 }
 
 export const mutations = {
   setQualities(state, { qualities }) {
     state.qualities = qualities
+  },
+  setQuality(state, { quality }) {
+    state.quality = quality
   }
 }
 
@@ -18,5 +23,10 @@ export const actions = {
     const response = await this.$axios.$get('/api/v1/qualities')
     const qualities = response.data
     commit('setQualities', { qualities })
+  },
+  async fetchQuality({ commit }, { qualityId }) {
+    const response = await this.$axios.$get(`/api/v1/qualities/${qualityId}`)
+    const quality = response.data
+    commit('setQuality', { quality })
   }
 }
