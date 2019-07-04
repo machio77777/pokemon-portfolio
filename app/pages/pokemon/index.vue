@@ -1,21 +1,19 @@
 <template>
   <div class="main-container">
+    <div id="region-list">
+      <label><div class="region" @click="init('generation=1')"><img src="~/assets/img/monster-ball.png" alt="" /> カントー</div></label>
+      <label><div class="region" @click="init('generation=2')"><img src="~/assets/img/monster-ball.png" alt="" /> ジョウト</div></label>
+      <label><div class="region" @click="init('generation=3')"><img src="~/assets/img/monster-ball.png" alt="" /> ホウエン</div></label>
+      <label><div class="region" @click="init('generation=4')"><img src="~/assets/img/monster-ball.png" alt="" /> シンオウ</div></label>
+      <label><div class="region" @click="init('generation=5')"><img src="~/assets/img/monster-ball.png" alt="" /> イッシュ</div></label>
+      <label><div class="region" @click="init('generation=6')"><img src="~/assets/img/monster-ball.png" alt="" /> カロス</div></label>
+      <label><div class="region" @click="init('generation=7')"><img src="~/assets/img/monster-ball.png" alt="" /> アローラ</div></label>
+      <label><div class="region" @click="init('megaFlg=1')"><img src="~/assets/img/monster-ball.png" alt="" /> メガシンカ</div></label>
+    </div>
     <div v-show="loading" class="loader"></div>
-    <div v-show="!loading">
-      <div id="region-list">
-        <label><div class="region" @click="init('generation=1')"><img src="~/assets/img/monster-ball.png" alt="" /> カントー</div></label>
-        <label><div class="region" @click="init('generation=2')"><img src="~/assets/img/monster-ball.png" alt="" /> ジョウト</div></label>
-        <label><div class="region" @click="init('generation=3')"><img src="~/assets/img/monster-ball.png" alt="" /> ホウエン</div></label>
-        <label><div class="region" @click="init('generation=4')"><img src="~/assets/img/monster-ball.png" alt="" /> シンオウ</div></label>
-        <label><div class="region" @click="init('generation=5')"><img src="~/assets/img/monster-ball.png" alt="" /> イッシュ</div></label>
-        <label><div class="region" @click="init('generation=6')"><img src="~/assets/img/monster-ball.png" alt="" /> カロス</div></label>
-        <label><div class="region" @click="init('generation=7')"><img src="~/assets/img/monster-ball.png" alt="" /> アローラ</div></label>
-        <label><div class="region" @click="init('megaFlg=1')"><img src="~/assets/img/monster-ball.png" alt="" /> メガシンカ</div></label>
-      </div>
-      <div id="pokemons">
-        <div class="element-link" v-for="pokemon in pokemons" :key="pokemon.zukanNo + pokemon.subNo">
-          <nuxt-link :to="{ name: 'pokemon-zukanNo-subNo', params: { zukanNo: pokemon.zukanNo, subNo: pokemon.subNo }}">{{ pokemon.zukanNo }} : {{ pokemon.name }}</nuxt-link>
-        </div>
+    <div  v-show="!loading" id="pokemons">
+      <div class="element-link" v-for="pokemon in pokemons" :key="pokemon.zukanNo + pokemon.subNo">
+        <nuxt-link :to="{ name: 'pokemon-zukanNo-subNo', params: { zukanNo: pokemon.zukanNo, subNo: pokemon.subNo }}">{{ pokemon.zukanNo }} : {{ pokemon.name }}</nuxt-link>
       </div>
     </div>
   </div>
@@ -30,7 +28,10 @@ export default {
     await store.dispatch('pokemon/fetchPokemons', { parameters : queryString })
   },
   computed: {
-    ...mapGetters("pokemon", ['pokemons', 'loading'])
+    ...mapGetters({
+      'pokemons' : 'pokemon/pokemons',
+      'loading' :  'loading'
+    })
   },
   methods: {
     async init(queryString) {
@@ -43,7 +44,7 @@ export default {
 
 <style scoped>
 .loader {
-  margin-top: 37vh;
+  margin-top: 30vh;
 }
 #region-list {
   display: flex;

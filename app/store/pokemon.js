@@ -1,14 +1,12 @@
 
 export const state = () => ({
   pokemons: [],
-  pokemon: [],
-  loading: true
+  pokemon: []
 })
 
 export const getters = {
   pokemons: (state) => state.pokemons,
-  pokemon: (state) => state.pokemon,
-  loading: (state) => state.loading
+  pokemon: (state) => state.pokemon
 }
 
 export const mutations = {
@@ -17,15 +15,12 @@ export const mutations = {
   },
   setPokemon(state, { pokemon }) {
     state.pokemon = pokemon
-  },
-  setLoading(state, { loading }) {
-    state.loading = loading
   }
 }
 
 export const actions = {
   async fetchPokemons({ commit }, { parameters }) {
-    commit('setLoading', { loading : true })
+    commit('setLoading', { loading : true }, { root : true })
     let url = '/api/v1/pokemons'
     if (parameters !== null && parameters !== undefined) {
       url = url + '?' + parameters
@@ -33,7 +28,7 @@ export const actions = {
     const response = await this.$axios.$get(url)
     const pokemons = response.data
     commit('setPokemons', { pokemons })
-    commit('setLoading', { loading : false })
+    commit('setLoading', { loading : false }, { root : true })
   },
   async fetchPokemon({ commit }, { zukanNo, subNo }) {
     const response = await this.$axios.$get(`/api/v1/pokemons/${zukanNo}/${subNo}`)
