@@ -3,26 +3,26 @@
     <div id="skills">
       <div id="type-list">
         <div class="list">
-          <label><div class="type" @click="search('type=1')"> ノーマル</div></label>
-          <label><div class="type" @click="search('type=2')"> ほのお</div></label>
-          <label><div class="type" @click="search('type=3')"> みず</div></label>
-          <label><div class="type" @click="search('type=4')"> でんき</div></label>
-          <label><div class="type" @click="search('type=5')"> くさ</div></label>
-          <label><div class="type" @click="search('type=6')"> こおり</div></label>
-          <label><div class="type" @click="search('type=7')"> かくとう</div></label>
-          <label><div class="type" @click="search('type=8')"> どく</div></label>
-          <label><div class="type" @click="search('type=9')"> じめん</div></label>
-          <label><div class="type" @click="search('type=10')"> ひこう</div></label>
+          <label><div class="type" @click="search('typeId=1')"> ノーマル</div></label>
+          <label><div class="type" @click="search('typeId=2')"> ほのお</div></label>
+          <label><div class="type" @click="search('typeId=3')"> みず</div></label>
+          <label><div class="type" @click="search('typeId=4')"> でんき</div></label>
+          <label><div class="type" @click="search('typeId=5')"> くさ</div></label>
+          <label><div class="type" @click="search('typeId=6')"> こおり</div></label>
+          <label><div class="type" @click="search('typeId=7')"> かくとう</div></label>
+          <label><div class="type" @click="search('typeId=8')"> どく</div></label>
+          <label><div class="type" @click="search('typeId=9')"> じめん</div></label>
+          <label><div class="type" @click="search('typeId=10')"> ひこう</div></label>
         </div>
         <div class="list">
-          <label><div class="type" @click="search('type=11')"> エスパー</div></label>
-          <label><div class="type" @click="search('type=12')"> むし</div></label>
-          <label><div class="type" @click="search('type=13')"> いわ</div></label>
-          <label><div class="type" @click="search('type=14')"> ゴースト</div></label>
-          <label><div class="type" @click="search('type=15')"> ドラゴン</div></label>
-          <label><div class="type" @click="search('type=16')"> あく</div></label>
-          <label><div class="type" @click="search('type=17')"> はがね</div></label>
-          <label><div class="type" @click="search('type=18')"> フェアリー</div></label>
+          <label><div class="type" @click="search('typeId=11')"> エスパー</div></label>
+          <label><div class="type" @click="search('typeId=12')"> むし</div></label>
+          <label><div class="type" @click="search('typeId=13')"> いわ</div></label>
+          <label><div class="type" @click="search('typeId=14')"> ゴースト</div></label>
+          <label><div class="type" @click="search('typeId=15')"> ドラゴン</div></label>
+          <label><div class="type" @click="search('typeId=16')"> あく</div></label>
+          <label><div class="type" @click="search('typeId=17')"> はがね</div></label>
+          <label><div class="type" @click="search('typeId=18')"> フェアリー</div></label>
           <label><div class="type" @click="search(null)"> クリア</div></label>
         </div>
       </div>
@@ -38,7 +38,7 @@
         <div class="skill_element" style="display: flex;" v-for="skill in skills" :key="skill.skillId">
           <div class="id">{{ skill.skillId }}</div>
           <div class="name"><nuxt-link :to="{ name: 'skill-skillId', params: { skillId: skill.skillId }}">{{ skill.skillName }}</nuxt-link></div>
-          <div :class="['s-type', skill.typeId]">{{ skill.typeName }}</div>
+          <div :class="['s-type', 'type-' + skill.typeId]">{{ skill.typeName }}</div>
           <div class="power">{{ skill.power }}</div>
           <div class="effect">{{ skill.effect }}</div>
         </div>
@@ -63,9 +63,9 @@ export default {
     ...mapGetters("skill", ['skills'])
   },
   methods: {
-    async search(type) {
+    async search(typeId) {
       this.loading = true
-      await this.fetchSkills({ query : type })
+      await this.fetchSkills({ query : typeId })
       this.loading = false
     },
     ...mapActions('skill', ['fetchSkills'])

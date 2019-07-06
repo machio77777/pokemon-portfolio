@@ -14,11 +14,11 @@
             </tr>
             <tr>
               <th>タイプ1</th>
-              <td><div :class="['s-type', pokemon.typeId1]">{{ pokemon.type1 }}</div></td>
+              <td><div :class="['s-type', 'type-' + pokemon.typeId1]">{{ pokemon.typeName1 }}</div></td>
             </tr>
             <tr v-if="pokemon.type2 !== null">
               <th>タイプ2</th>
-              <td><div :class="['s-type', pokemon.typeId2]">{{ pokemon.type2 }}</div></td>
+              <td><div :class="['s-type', 'type-' + pokemon.typeId2]">{{ pokemon.typeName2 }}</div></td>
             </tr>
             <tr>
               <th>特性1</th>
@@ -50,32 +50,32 @@
       <div id="skills">
         <div id="type-list">
           <div class="list">
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=1')"> ノーマル</div></label>
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=2')"> ほのお</div></label>
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=3')"> みず</div></label>
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=4')"> でんき</div></label>
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=5')"> くさ</div></label>
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=6')"> こおり</div></label>
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=7')"> かくとう</div></label>
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=8')"> どく</div></label>
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=9')"> じめん</div></label>
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=10')"> ひこう</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=1')"> ノーマル</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=2')"> ほのお</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=3')"> みず</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=4')"> でんき</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=5')"> くさ</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=6')"> こおり</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=7')"> かくとう</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=8')"> どく</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=9')"> じめん</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=10')"> ひこう</div></label>
           </div>
           <div class="list">
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=11')"> エスパー</div></label>
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=12')"> むし</div></label>
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=13')"> いわ</div></label>
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=14')"> ゴースト</div></label>
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=15')"> ドラゴン</div></label>
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=16')"> あく</div></label>
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=17')"> はがね</div></label>
-            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=18')"> フェアリー</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=11')"> エスパー</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=12')"> むし</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=13')"> いわ</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=14')"> ゴースト</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=15')"> ドラゴン</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=16')"> あく</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=17')"> はがね</div></label>
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'typeId=18')"> フェアリー</div></label>
             <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, null)"> クリア</div></label>
           </div>
         </div>
         <div v-show="loading" class="loader"></div>
         <div v-show="!loading" class="skill_element" style="display: flex;" v-for="skill in skills" :key="skill.skillId">
-          <div :class="['s-type', skill.typeId]">{{ skill.typeName }}</div>
+          <div :class="['s-type', 'type-' + skill.typeId]">{{ skill.typeName }}</div>
           <div class="name"><nuxt-link :to="{ name: 'skill-skillId', params: { skillId: skill.skillId }}"><span>{{ skill.skillName }}</span></nuxt-link></div>
           <div class="power">{{ skill.power }}</div>
           <div class="effect">{{ skill.effect }}</div>
@@ -105,9 +105,9 @@ export default {
     ...mapGetters({ 'pokemon' : 'pokemon/pokemon', 'skills' : 'pokemon/skills' })
   },
   methods: {
-    async search(zukanNo, subNo, type) {
+    async search(zukanNo, subNo, typeId) {
       this.loading = true
-      await this.fetchSkills({ zukanNo : zukanNo, subNo : subNo, query: type })
+      await this.fetchSkills({ zukanNo : zukanNo, subNo : subNo, query: typeId })
       this.loading = false
     },
     ...mapActions('pokemon', ['fetchSkills'])
