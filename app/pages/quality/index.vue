@@ -37,13 +37,12 @@ export default {
 .quality_element {
   margin-bottom: 10px;
   padding-bottom: 10px;
-  border-bottom: solid 1px;
+  border-bottom: solid 1px #c0c0c0;
   font-size: 14px;
 }
 .id {
   width: 40px;
   text-align: center;
-  border-right: solid 1px;
 }
 .name {
   width: 150px;
@@ -52,7 +51,6 @@ export default {
 .effect {
   padding-left: 10px;
   width: 770px;
-  border-left: solid 1px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

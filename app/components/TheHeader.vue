@@ -16,9 +16,6 @@
   margin: 0 20px;
   font-weight: bold;
 }
-#header li {
-  color: #ffffff;
-}
 #header a {
   color: #ffffff;
 }

@@ -10,7 +10,7 @@
   text-align: center;
   background-color: #696969;
 }
-p {
+#footer-container p {
   color: #ffffff;
 }
 </style>

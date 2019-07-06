@@ -24,18 +24,21 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   async asyncData({ store }) {
-    const queryString = 'generation=1'
-    await store.dispatch('pokemon/fetchPokemons', { parameters : queryString })
+    await store.dispatch('pokemon/fetchPokemons', { parameters : 'generation=1' })
+  },
+  data() {
+    return {
+      loading: false
+    }
   },
   computed: {
-    ...mapGetters({
-      'pokemons' : 'pokemon/pokemons',
-      'loading' :  'loading'
-    })
+    ...mapGetters({'pokemons' : 'pokemon/pokemons'})
   },
   methods: {
     async init(queryString) {
+      this.loading = true
       await this.fetchPokemons({ parameters : queryString })
+      this.loading = false
     },
     ...mapActions('pokemon', ['fetchPokemons'])
   }

@@ -3,29 +3,14 @@
     <img src="~/assets/img/home.gif" alt="">
     <p class="head-line">レーティング対戦向け</p>
     <div class="site-contents">
-      <nuxt-link to="/pokemon">
-        <div class="site-sub-content">
-          <img src="~/assets/img/monster-ball.png" alt="">ポケモン図鑑一覧
-        </div>
-      </nuxt-link>
-      <nuxt-link to="/quality">
-        <div class="site-sub-content">
-          <img src="~/assets/img/poke-tre.png" alt="">特性一覧
-        </div>
-      </nuxt-link>
-      <nuxt-link to="/skill">
-        <div class="site-sub-content">
-          <img src="~/assets/img/skill-case.png" alt="">技一覧
-        </div>
-      </nuxt-link>
+      <nuxt-link to="/pokemon"><div class="site-sub-content"><img src="~/assets/img/monster-ball.png" alt=""> ポケモン図鑑一覧</div></nuxt-link>
+      <nuxt-link to="/quality"><div class="site-sub-content"><img src="~/assets/img/poke-tre.png" alt=""> 特性一覧</div></nuxt-link>
+      <nuxt-link to="/skill"><div class="site-sub-content"><img src="~/assets/img/skill-case.png" alt=""> 技一覧</div></nuxt-link>
     </div>
-    <nuxt-link to="/">
-      <div class="site-contents">
-        <div class="site-sub-content">
-          <img src="~/assets/img/learning-machine.png" alt="">育成済み一覧
-        </div>
-      </div>
-    </nuxt-link>
+    <div class="site-contents">
+      <nuxt-link to="/soldier"><div class="site-sub-content"><img src="~/assets/img/learning-machine.png" alt=""> 育成済み一覧</div></nuxt-link>
+      <nuxt-link to="/syuzoku"><div class="site-sub-content"><img src="~/assets/img/pip.png" alt=""> 種族値ランキング</div></nuxt-link>
+    </div>
     <p class="head-line">外部リンク先</p>
     <div class="site-contents">
       <a href="https://www.pokemon.co.jp/" target="_blank">

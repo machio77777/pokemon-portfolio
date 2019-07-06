@@ -1,3 +1,4 @@
+
 export const state = () => ({
   skills: [],
   skill: []
@@ -18,8 +19,12 @@ export const mutations = {
 }
 
 export const actions = {
-  async fetchSkills({ commit }) {
-    const response = await this.$axios.$get('/api/v1/skills')
+  async fetchSkills({ commit }, { query }) {
+    let url = '/api/v1/skills'
+    if (query !== null) {
+      url = url + `?${query}` 
+    }
+    const response = await this.$axios.$get(url)
     const skills = response.data
     commit('setSkills', { skills })
   },

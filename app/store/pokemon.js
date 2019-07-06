@@ -1,4 +1,3 @@
-import axiosRetry from "axios-retry";
 
 export const state = () => ({
   pokemons: [],
@@ -26,8 +25,6 @@ export const mutations = {
 
 export const actions = {
   async fetchPokemons({ commit }, { parameters }) {
-    // TODO ローデイング処理は別途要考察
-    commit('setLoading', { loading : true }, { root : true })
     let url = '/api/v1/pokemons'
     if (parameters !== null && parameters !== undefined) {
       url = url + '?' + parameters
@@ -35,8 +32,6 @@ export const actions = {
     const response = await this.$axios.$get(url)
     const pokemons = response.data
     commit('setPokemons', { pokemons })
-    // TODO ローデイング処理は別途要考察
-    commit('setLoading', { loading : false }, { root : true })
   },
   async fetchPokemon({ commit }, { zukanNo, subNo }) {
     const response = await this.$axios.$get(`/api/v1/pokemons/${zukanNo}/${subNo}`)
@@ -44,18 +39,12 @@ export const actions = {
     commit('setPokemon', { pokemon })
   },
   async fetchSkills({ commit }, { zukanNo, subNo, query }) {
-    if (query !== null) {
-      commit('setLoading', { loading : true }, { root : true })
-    }
     let url = `/api/v1/pokemons/${zukanNo}/${subNo}/skills`
-    if (query !== null && query !== 'all') {
+    if (query !== null) {
       url = url + `?${query}`
     }
     const response = await this.$axios.$get(url)
     const skills = response.data
     commit('setSkills', { skills })
-    if (query !== null) {
-      commit('setLoading', { loading : false }, { root : true })
-    }
   }
 }
