@@ -16,7 +16,7 @@
               <th>タイプ1</th>
               <td><div :class="['s-type', 'type-' + pokemon.typeId1]">{{ pokemon.typeName1 }}</div></td>
             </tr>
-            <tr v-if="pokemon.type2 !== null">
+            <tr v-if="pokemon.typeId2 !== '0'">
               <th>タイプ2</th>
               <td><div :class="['s-type', 'type-' + pokemon.typeId2]">{{ pokemon.typeName2 }}</div></td>
             </tr>

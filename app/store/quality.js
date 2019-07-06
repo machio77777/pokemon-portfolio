@@ -1,12 +1,14 @@
 
 export const state = () => ({
   qualities: [],
-  quality: []
+  quality: [],
+  pokemons: []
 })
 
 export const getters = {
   qualities: (state) => state.qualities,
-  quality: (state) => state.quality
+  quality: (state) => state.quality,
+  pokemons: (state) => state.pokemons
 }
 
 export const mutations = {
@@ -15,6 +17,9 @@ export const mutations = {
   },
   setQuality(state, { quality }) {
     state.quality = quality
+  },
+  setPokemons(state, { pokemons }) {
+    state.pokemons = pokemons
   }
 }
 
@@ -28,5 +33,10 @@ export const actions = {
     const response = await this.$axios.$get(`/api/v1/qualities/${qualityId}`)
     const quality = response.data
     commit('setQuality', { quality })
+  },
+  async fetchPokemons({ commit }, { qualityId }) {
+    const response = await this.$axios.$get(`/api/v1/qualities/${qualityId}/pokemons`)
+    const pokemons = response.data
+    commit('setPokemons', { pokemons })
   }
 }
