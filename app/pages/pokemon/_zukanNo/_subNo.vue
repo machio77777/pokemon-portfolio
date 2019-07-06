@@ -5,7 +5,7 @@
         <div class="item">
           <table>
             <tr>
-              <th style="padding: 0;"><img src="~/assets/img/zukan/001.png"></th>
+              <th style="padding: 0;"><img src="~/assets/img/zukan/001.png"/></th>
               <td style="padding: 0;">
                 <p>{{ pokemon.name }}</p>
                 <p>ぜんこくNo. {{ pokemon.zukanNo }}</p>
@@ -42,29 +42,33 @@
       <div id="skills">
         <div id="type-list">
           <div class="list">
-            <label><div class="type type-1" @click="init('type=1')"> ノーマル</div></label>
-            <label><div class="type type-2" @click="init('type=2')"> ほのお</div></label>
-            <label><div class="type type-3" @click="init('type=3')"> みず</div></label>
-            <label><div class="type type-4" @click="init('type=4')"> でんき</div></label>
-            <label><div class="type type-5" @click="init('type=5')"> くさ</div></label>
-            <label><div class="type type-6" @click="init('type=6')"> こおり</div></label>
-            <label><div class="type type-7" @click="init('type=7')"> かくとう</div></label>
-            <label><div class="type type-8" @click="init('type=8')"> どく</div></label>
-            <label><div class="type type-9" @click="init('type=9')"> じめん</div></label>
+            <label><div class="type type-1" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=1')"> ノーマル</div></label>
+            <label><div class="type type-2" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=2')"> ほのお</div></label>
+            <label><div class="type type-3" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=3')"> みず</div></label>
+            <label><div class="type type-4" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=4')"> でんき</div></label>
+            <label><div class="type type-5" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=5')"> くさ</div></label>
+            <label><div class="type type-6" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=6')"> こおり</div></label>
+            <label><div class="type type-7" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=7')"> かくとう</div></label>
+            <label><div class="type type-8" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=8')"> どく</div></label>
+            <label><div class="type type-9" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=9')"> じめん</div></label>
           </div>
           <div class="list">
-            <label><div class="type type-10" @click="init('type=10')"> ひこう</div></label>
-            <label><div class="type type-11" @click="init('type=11')"> エスパー</div></label>
-            <label><div class="type type-12" @click="init('type=12')"> むし</div></label>
-            <label><div class="type type-13" @click="init('type=13')"> いわ</div></label>
-            <label><div class="type type-14" @click="init('type=14')"> ゴースト</div></label>
-            <label><div class="type type-15" @click="init('type=15')"> ドラゴン</div></label>
-            <label><div class="type type-16" @click="init('type=16')"> あく</div></label>
-            <label><div class="type type-17" @click="init('type=17')"> はがね</div></label>
-            <label><div class="type type-18" @click="init('type=18')"> フェアリー</div></label>
+            <label><div class="type type-10" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=10')"> ひこう</div></label>
+            <label><div class="type type-11" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=11')"> エスパー</div></label>
+            <label><div class="type type-12" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=12')"> むし</div></label>
+            <label><div class="type type-13" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=13')"> いわ</div></label>
+            <label><div class="type type-14" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=14')"> ゴースト</div></label>
+            <label><div class="type type-15" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=15')"> ドラゴン</div></label>
+            <label><div class="type type-16" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=16')"> あく</div></label>
+            <label><div class="type type-17" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=17')"> はがね</div></label>
+            <label><div class="type type-18" @click="search(pokemon.zukanNo, pokemon.subNo, 'type=18')"> フェアリー</div></label>
+          </div>
+          <div class="list">
+            <label><div class="type" @click="search(pokemon.zukanNo, pokemon.subNo, 'all')"> クリア</div></label>
           </div>
         </div>
-        <div class="skill_element" style="display: flex;" v-for="skill in skills" :key="skill.skillId">
+        <div v-show="loading" class="loader"></div>
+        <div v-show="!loading" class="skill_element" style="display: flex;" v-for="skill in skills" :key="skill.skillId">
           <div :class="['s-type', skill.typeId]">{{ skill.typeName }}</div>
           <div class="name"><nuxt-link :to="{ name: 'skill-skillId', params: { skillId: skill.skillId }}"><span>{{ skill.skillName }}</span></nuxt-link></div>
           <div class="power">{{ skill.power }}</div>
@@ -76,21 +80,28 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   async asyncData({ store, params }) {
     const zukanNo = params.zukanNo
     const subNo = params.subNo
     await store.dispatch('pokemon/fetchPokemon', { zukanNo : zukanNo, subNo : subNo })
-    await store.dispatch('pokemon/fetchSkills', { zukanNo : zukanNo, subNo : subNo })
+    await store.dispatch('pokemon/fetchSkills', { zukanNo : zukanNo, subNo : subNo, query : null })
   },
   computed: {
     ...mapGetters({
       'pokemon' : 'pokemon/pokemon', 
-      'skills' : 'pokemon/skills'
+      'skills' : 'pokemon/skills',
+      'loading' :  'loading'
     })
   },
+  methods: {
+    async search(zukanNo, subNo, type) {
+      await this.fetchSkills({ zukanNo : zukanNo, subNo : subNo, query: type })
+    },
+    ...mapActions('pokemon', ['fetchSkills'])
+  }
 }
 </script>
 
@@ -99,7 +110,6 @@ export default {
   padding: 30px;
 }
 #pokemon {
-  padding-top: 20px;
   padding-left: 20px;
 }
 #pokemon th {
@@ -126,7 +136,7 @@ export default {
   border-bottom: solid 1px;
 }
 .item {
-  margin-right: 40px;
+  margin-right: 60px;
 }
 .status {
   padding-top: 15px;
@@ -144,76 +154,6 @@ export default {
   border-radius: 4px;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
 }
-.type-1 {
-  background-color: #f8f8ff;
-}
-.type-2 {
-  color: #ffffff;
-  background-color: #ff6347;
-}
-.type-3 {
-  color: #ffffff;
-  background-color: #00bfff;
-}
-.type-4 {
-  background-color: #ffff00;
-}
-.type-5 {
-  color: #ffffff;
-  background-color: #3cb371;
-}
-.type-6 {
-  color: #ffffff;
-  background-color: #00ffff;
-}
-.type-7 {
-  color: #ffffff;
-  background-color: #8b0000;;
-}
-.type-8 {
-  color: #ffffff;
-  background-color: #9400d3;
-}
-.type-9 {
-  color: #ffffff;
-  background-color: #deb887;
-}
-.type-10 {
-  color: #ffffff;
-  background-color: #87cefa;
-}
-.type-11 {
-  color: #ffffff;
-  background-color: #ffb6c1;
-}
-.type-12 {
-  color: #ffffff;
-  background-color: #8fbc8f;
-}
-.type-13 {
-  color: #ffffff;
-  background-color: #d2b48c;
-}
-.type-14 {
-  color: #ffffff;
-  background-color: #483d8b;
-}
-.type-15 {
-  color: #ffffff;
-  background-color:#191970;
-}
-.type-16 {
-  color: #ffffff;
-  background-color: #000000;
-}
-.type-17 {
-  color: #ffffff;
-  background-color: #a9a9a9;
-}
-.type-18 {
-  color: #ffffff;
-  background-color: #ff69b4;
-}
 .status-bar {
   padding: 3px 15px 3px 10px;
   text-align: left;
@@ -224,7 +164,7 @@ export default {
   box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
 }
 #type-list {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 .list {
   display: flex;

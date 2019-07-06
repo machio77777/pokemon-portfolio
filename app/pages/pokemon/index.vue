@@ -11,7 +11,7 @@
       <label><div class="region" @click="init('megaFlg=1')"><img src="~/assets/img/monster-ball.png" alt="" /> メガシンカ</div></label>
     </div>
     <div v-show="loading" class="loader"></div>
-    <div  v-show="!loading" id="pokemons">
+    <div v-show="!loading" id="pokemons">
       <div class="element-link" v-for="pokemon in pokemons" :key="pokemon.zukanNo + pokemon.subNo">
         <nuxt-link :to="{ name: 'pokemon-zukanNo-subNo', params: { zukanNo: pokemon.zukanNo, subNo: pokemon.subNo }}">{{ pokemon.zukanNo }} : {{ pokemon.name }}</nuxt-link>
       </div>
@@ -86,7 +86,7 @@ export default {
   font-size: 14px;
   border: solid 1px #c0c0c0;
   border-radius: 3px;
-  background-color: #f8f8ff;
+  background-color: #f0f8ff;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
   overflow: hidden;
   text-overflow: ellipsis;

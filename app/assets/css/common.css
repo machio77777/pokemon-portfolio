@@ -1,15 +1,15 @@
 
+/*** HTML全体 ***/
 * {
   font-family: "ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro";
   margin: 0;
   padding: 0;
   color: #666666;
 }
-
 .main-container {
   padding: 20px 20px 40px 20px;
   width: 85%;
-  background-color: #f5f5f5;
+  background-color: #f8f8ff;
 }
 ul {
   list-style: none;
@@ -18,5 +18,81 @@ li {
   margin-bottom: 20px;
 }
 a {
+  color: #6495ed;
   text-decoration: none;
+}
+a span {
+  color: #6495ed;
+}
+
+/*** ポケモン系スタイル ***/
+.type-1 {
+  background-color: #f8f8ff;
+}
+.type-2 {
+  color: #ffffff;
+  background-color: #ff6347;
+}
+.type-3 {
+  color: #ffffff;
+  background-color: #00bfff;
+}
+.type-4 {
+  background-color: #ffff00;
+}
+.type-5 {
+  color: #ffffff;
+  background-color: #3cb371;
+}
+.type-6 {
+  color: #ffffff;
+  background-color: #00ffff;
+}
+.type-7 {
+  color: #ffffff;
+  background-color: #8b0000;;
+}
+.type-8 {
+  color: #ffffff;
+  background-color: #9400d3;
+}
+.type-9 {
+  color: #ffffff;
+  background-color: #deb887;
+}
+.type-10 {
+  color: #ffffff;
+  background-color: #87cefa;
+}
+.type-11 {
+  color: #ffffff;
+  background-color: #ffb6c1;
+}
+.type-12 {
+  color: #ffffff;
+  background-color: #8fbc8f;
+}
+.type-13 {
+  color: #ffffff;
+  background-color: #d2b48c;
+}
+.type-14 {
+  color: #ffffff;
+  background-color: #483d8b;
+}
+.type-15 {
+  color: #ffffff;
+  background-color:#191970;
+}
+.type-16 {
+  color: #ffffff;
+  background-color: #000000;
+}
+.type-17 {
+  color: #ffffff;
+  background-color: #a9a9a9;
+}
+.type-18 {
+  color: #ffffff;
+  background-color: #ff69b4;
 }

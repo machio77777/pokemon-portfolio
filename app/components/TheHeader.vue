@@ -1,7 +1,7 @@
 <template>
   <div id="header-container">
     <ul id="header">
-      <li>Pokémon Portfolio</li>
+      <li><nuxt-link to="/">Pokémon Portfolio</nuxt-link></li>
     </ul>
   </div>
 </template>
@@ -17,6 +17,9 @@
   font-weight: bold;
 }
 #header li {
+  color: #ffffff;
+}
+#header a {
   color: #ffffff;
 }
 </style>

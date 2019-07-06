@@ -26,6 +26,7 @@ export const mutations = {
 
 export const actions = {
   async fetchPokemons({ commit }, { parameters }) {
+    // TODO ローデイング処理は別途要考察
     commit('setLoading', { loading : true }, { root : true })
     let url = '/api/v1/pokemons'
     if (parameters !== null && parameters !== undefined) {
@@ -34,6 +35,7 @@ export const actions = {
     const response = await this.$axios.$get(url)
     const pokemons = response.data
     commit('setPokemons', { pokemons })
+    // TODO ローデイング処理は別途要考察
     commit('setLoading', { loading : false }, { root : true })
   },
   async fetchPokemon({ commit }, { zukanNo, subNo }) {
@@ -41,9 +43,19 @@ export const actions = {
     const pokemon = response.data
     commit('setPokemon', { pokemon })
   },
-  async fetchSkills({ commit }, { zukanNo, subNo }) {
-    const response = await this.$axios.$get(`/api/v1/pokemons/${zukanNo}/${subNo}/skills`)
+  async fetchSkills({ commit }, { zukanNo, subNo, query }) {
+    if (query !== null) {
+      commit('setLoading', { loading : true }, { root : true })
+    }
+    let url = `/api/v1/pokemons/${zukanNo}/${subNo}/skills`
+    if (query !== null && query !== 'all') {
+      url = url + `?${query}`
+    }
+    const response = await this.$axios.$get(url)
     const skills = response.data
     commit('setSkills', { skills })
+    if (query !== null) {
+      commit('setLoading', { loading : false }, { root : true })
+    }
   }
 }
