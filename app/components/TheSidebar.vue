@@ -11,10 +11,10 @@
         <nuxt-link to="/skill"><img src="~/assets/img/skill-case.png" alt=""> 技一覧</nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/soldier"><img src="~/assets/img/learning-machine.png" alt=""> 育成済み一覧</nuxt-link>
+        <nuxt-link to="/ranking"><img src="~/assets/img/pip.png" alt=""> 種族値ランキング</nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/ranking"><img src="~/assets/img/pip.png" alt=""> 種族値ランキング</nuxt-link>
+        <nuxt-link to="/soldier"><img src="~/assets/img/learning-machine.png" alt=""> レーティング</nuxt-link>
       </li>
     </ul>
   </div>
