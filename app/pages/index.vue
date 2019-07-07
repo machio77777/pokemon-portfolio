@@ -9,7 +9,7 @@
     </div>
     <div class="site-contents">
       <nuxt-link to="/soldier"><div class="site-sub-content"><img src="~/assets/img/learning-machine.png" alt=""> 育成済み一覧</div></nuxt-link>
-      <nuxt-link to="/syuzoku"><div class="site-sub-content"><img src="~/assets/img/pip.png" alt=""> 種族値ランキング</div></nuxt-link>
+      <nuxt-link to="/ranking"><div class="site-sub-content"><img src="~/assets/img/pip.png" alt=""> 種族値ランキング</div></nuxt-link>
     </div>
     <p class="head-line">外部リンク先</p>
     <div class="site-contents">
