@@ -1,6 +1,12 @@
 <template>
   <div class="main-container">
-    <div id="btn-area">
+    <div id="search-area">
+      <table>
+        <tr>
+          <th>名称</th>
+          <td><input type="text" value="" /></td>
+        </tr>
+      </table>
       <div id="insertPokemon" @click="insertPokemon()">新規登録</div>
     </div>
     <div v-show="loading" class="loader"></div>
@@ -61,7 +67,11 @@ export default {
 </script>
 
 <style scoped>
-#btn-area {
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+#search-area {
   margin-bottom: 20px;
   padding: 0px 30px;
 }
@@ -85,10 +95,6 @@ export default {
   width: 960px;
   margin: 0 auto;
   padding: 0px 20px;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
 }
 #pokemons th {
   color: #ffffff;
