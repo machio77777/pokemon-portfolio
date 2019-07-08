@@ -52,5 +52,18 @@ export default {
     }
   }
 }
+```
 
+## Test.
+- jestインストール.
+```js
+yarn add -D jest
+yarn add -D @vue/test-utils lodash.clonedeep
+```
+
+- package.jsonに追記.
+```js
+"scripts": {
+  "test": "jest"
+},
 ```
