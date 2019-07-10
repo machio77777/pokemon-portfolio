@@ -59,6 +59,10 @@ export default {
 ```js
 yarn add -D jest
 yarn add -D @vue/test-utils lodash.clonedeep
+yarn add -D babel-jest 'babel-core@^7.0.0-0'
+yarn add -D @babel/preset-env
+yarn add @babel/polyfill --save-dev
+yarn add core-js@3
 ```
 
 - package.jsonに追記.

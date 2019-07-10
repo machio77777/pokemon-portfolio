@@ -31,3 +31,10 @@ export const actions = {
     commit('setPokemons', { pokemons })
   }
 }
+
+export default {
+  state,
+  getters,
+  mutations,
+  actions
+}

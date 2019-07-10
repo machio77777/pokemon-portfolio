@@ -48,3 +48,10 @@ export const actions = {
     commit('setSkills', { skills })
   }
 }
+
+export default {
+  state,
+  getters,
+  mutations,
+  actions
+}
