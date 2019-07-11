@@ -7,7 +7,7 @@
           <td><input type="text" value="" /></td>
         </tr>
       </table>
-      <div id="insertPokemon" @click="insertPokemon()">新規登録</div>
+      <nuxt-link to="/soldier/new"><div id="insertPokemon">新規登録</div></nuxt-link>
     </div>
     <div v-show="loading" class="loader"></div>
     <div v-show="!loading" id="pokemons">
@@ -51,11 +51,6 @@ export default {
     ...mapGetters({'pokemons' : 'soldier/pokemons'})
   },
   methods: {
-    async insertPokemon() {
-      this.loading = true
-      alert('新規登録が成功しました!')
-      this.loading = false
-    },
     async deletePokemon(soldierId) {
       this.loading = true
       alert(soldierId)
