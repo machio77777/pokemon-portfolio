@@ -14,7 +14,7 @@
         <nuxt-link to="/ranking"><img src="~/assets/img/pip.png" alt=""> 種族値ランキング</nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/soldier"><img src="~/assets/img/learning-machine.png" alt=""> レーティング</nuxt-link>
+        <nuxt-link to="/"><img src="~/assets/img/learning-machine.png" alt=""> レーティング</nuxt-link>
       </li>
     </ul>
   </div>
