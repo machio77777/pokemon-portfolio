@@ -1,66 +1,60 @@
 <template>
   <div class="main-container">
-    <h2>育成済みポケモン登録</h2>
     <div id="pokemon">
       <div class="item">
-        <h3>基本情報</h3>
-        <ul>
-          <li>名前</li>
+        <p><input type="text" placeholder="ポケモンの名前を入力してください" :value=searchVal style="width:200px;" /></p>
+        <p><button type="button" @click="search()">検索</button></p>
+      </div>
+      <div v-show="loading" class="loader"></div>
+      <div v-show="!loading" class="item">
+        <ul style="margin-bottom: 20px;">
+          <li class="column">名前</li>
           <li>
-            <select id="zukanNo" style="width:230px;">
+            <select id="zukanNo" :disabled="disabled" style="margin-right: 40px;">
               <option v-for="pokemon in pokemons" :key="pokemon.zukanNo + pokemon.subNo" :value="pokemon.zukanNo+'-'+pokemon.subNo+'-'+pokemon.name">
                 {{pokemon.zukanNo}} : {{pokemon.name}}
               </option>
             </select>
           </li>
-          <li>特性</li>
+          <li class="column">特性</li>
           <li>
-            <select id="quality" style="width:120px;">
+            <select id="quality" :disabled="disabled">
               <option :value="pokemon.qualityId1+'-'+pokemon.quality1">{{pokemon.quality1}}</option>
               <option v-if="pokemon.quality2 !== null" :value="pokemon.qualityId2+'-'+pokemon.quality2">{{pokemon.quality2}}</option>
               <option v-if="pokemon.dreamQuality !== null" :value="pokemon.dreamQualityId+'-'+pokemon.dreamQuality">{{pokemon.dreamQuality}}</option>
             </select>
           </li>
-          <li>性格</li>
-          <li>
-            <select name="" id="">
-              <option v-for="character in characters" :key="character.charId">
-                {{character.name}}
-              </option>
-            </select>
-          </li>
         </ul>
-      </div>
-      <div class="item">
-        <h3>覚えさせる技</h3>
         <ul>
-          <li>技1</li>
+          <li class="column">技1</li>
           <li>
-            <select id="skill1">
+            <select id="skill1" :disabled="disabled" style="margin-right: 40px;">
               <option v-for="skill in skills" :key="skill.skillId" :value="skill.skillId">
                 {{skill.skillName}}
               </option>
             </select>
           </li>
-          <li>技2</li>
-          <li>
-            <select id="skill2">
+          <li class="column">技2</li>
+          <li style="margin-right: 20px;">
+            <select id="skill2" :disabled="disabled">
               <option v-for="skill in skills" :key="skill.skillId" :value="skill.skillId">
                 {{skill.skillName}}
               </option>
             </select>
           </li>
-          <li>技3</li>
-          <li>
-            <select id="skill3">
+        </ul>
+        <ul style="margin-bottom: 10px;">
+          <li class="column">技3</li>
+          <li style="margin-right: 20px;">
+            <select id="skill3" :disabled="disabled" style="margin-right: 40px;">
               <option v-for="skill in skills" :key="skill.skillId" :value="skill.skillId">
                 {{skill.skillName}}
               </option>
             </select>
           </li>
-          <li>技4</li>
+          <li class="column">技4</li>
           <li>
-            <select id="skill4">
+            <select id="skill4" :disabled="disabled">
               <option v-for="skill in skills" :key="skill.skillId" :value="skill.skillId">
                 {{skill.skillName}}
               </option>
@@ -68,76 +62,7 @@
           </li>
         </ul>
       </div>
-      <div class="item">
-        <h3>努力値</h3>
-        <ul>
-          <li>HP</li>
-          <li>
-            <select id="dhp" style="width:50px;">
-              <option value="">-</option>
-            </select>
-          </li>
-          <li>AT</li>
-          <li>
-            <select id="dat" style="width:50px;">
-              <option value="">-</option>
-            </select>
-          </li>
-          <li>DF</li>
-          <li>
-            <select id="ddf" style="width:50px;">
-              <option value="">-</option>
-            </select>
-          </li>
-          <li>SA</li>
-          <li>
-            <select id="dsa" style="width:50px;">
-              <option value="">-</option>
-            </select>
-          </li>
-          <li>SD</li>
-          <li>
-            <select id="dsd" style="width:50px;">
-              <option value="">-</option>
-            </select>
-          </li>
-          <li>SP</li>
-          <li>
-            <select id="dsp" style="width:50px;">
-              <option value="">-</option>
-            </select>
-          </li>
-        </ul>
-      </div>
-      <div class="item">
-        <h3>実数値</h3>
-        <ul>
-          <li>HP</li>
-          <li>
-            <input type="text" id="rhp" class="real-val" value="" readonly />
-          </li>
-          <li>AT</li>
-          <li>
-            <input type="text" id="rat" class="real-val" value="" readonly />
-          </li>
-          <li>DF</li>
-          <li>
-            <input type="text" id="rdf" class="real-val" value="" readonly />
-          </li>
-          <li>SA</li>
-          <li>
-            <input type="text" id="rsa" class="real-val" value="" readonly />
-          </li>
-          <li>SD</li>
-          <li>
-            <input type="text" id="rsd" class="real-val" value="" readonly />
-          </li>
-          <li>SP</li>
-          <li>
-            <input type="text" id="rsp" class="real-val" value="" readonly />
-          </li>
-        </ul>
-      </div>
+      <div class="item"></div>
     </div>
   </div>
 </template>
@@ -147,10 +72,13 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   async asyncData({ store }) {
-    //await store.dispatch('pokemon/fetchPokemons', { parameters : null })
-    //await store.dispatch('pokemon/fetchPokemon', { zukanNo : 1, subNo : 1 })
-    //await store.dispatch('pokemon/fetchSkills', { zukanNo : 1, subNo : 1, query : null})
-    //await store.dispatch('fetchCharacters')
+  },
+  data() {
+    return {
+      loading   : false,
+      searchVal : '',
+      disabled : true
+    }
   },
   computed: {
     ...mapGetters({ 
@@ -160,31 +88,37 @@ export default {
       'characters' : 'characters'
     })
   },
+  methods: {
+    async search() {
+      alert('hello world')
+    }
+  }
 }
 </script>
 
 <style scoped>
-.main-container {
-  padding: 30px 50px;
-}
 #pokemon {
-  width: 900px;
-  margin: 25px auto;
+  width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: solid 1px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
 }
 .item {
-  margin: 20px 0;
+  margin: 10px 0;
+  padding: 20px;
+  border-bottom: solid 1px #c0c0c0;
 }
-.item h3 {
-  margin-bottom: 20px;
+.item p {
+  margin: 10px 0;
 }
 li {
-  margin-right: 5px;
-  display: inline-block;
+  display: table-cell;
+  padding: 5px 0;
 }
-.real-val {
-  width: 60px;
-}
-.real-val:read-only {
-  background-color: #f5f5f5;
+.column {
+  width: 50px;
 }
 </style>
